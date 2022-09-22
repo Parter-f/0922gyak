@@ -2,6 +2,7 @@ package com.example.a0922gyak;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -9,6 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.Locale;
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,6 +19,11 @@ public class MainActivity extends AppCompatActivity {
     private Button gomb2;
     private Button gomb3;
     private TextView eredmeny;
+    private Random rnd;
+    private int red;
+    private int green;
+    private int blue;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,11 +33,6 @@ public class MainActivity extends AppCompatActivity {
         init();
     }
 
-    private void gomb1click(){
-
-
-
-    }
 
     private void init(){
 
@@ -39,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         gomb2 = findViewById(R.id.gomb2);
         gomb3 = findViewById(R.id.gomb3);
         eredmeny = findViewById(R.id.eredmeny);
+        rnd = new Random();
 
         gomb1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,6 +56,16 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 eredmeny.setText(szovegbox.getText().toString().toLowerCase());
 
+            }
+        });
+        gomb3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            red = rnd.nextInt(256);
+            green = rnd.nextInt(256);
+            blue = rnd.nextInt(256);
+
+            eredmeny.setBackgroundColor(Color.rgb(red , green , blue));
 
             }
         });
